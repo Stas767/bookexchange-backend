@@ -3,7 +3,7 @@ from django.db import models
 
 from . import constants
 
-
+# Сделать миграции
 # Написать условие для определения языка (возможно)
 
 User = get_user_model()
