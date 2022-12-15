@@ -1,24 +1,25 @@
 NAME_DEFAULT_LENGTH = 100
 
-CONDITIONS_EN = [
+CONDITIONS_EN = (
     'New',
     'Like New',
     'Very good',
     'Good',
     'Acceptable',
     'Almost Acceptable'
-]
+)
 
-CONDITIONS_RUS = [
+CONDITIONS_RUS = (
     'Новый/(ая)',
     'Как новый/(ая)',
     'Очень хорошее',
     'Достойное',
     'Приемлемое',
     'Практически приемлемое'
-]
+)
 
-GENRES_RUS = [
+# Сделать БД с жанрами - возможно
+GENRES_RUS = (
     'Роман',
     'Драма',
     'Проза',
@@ -34,4 +35,4 @@ GENRES_RUS = [
     'Проффесиональная литература',
     'Документальная литература',
     'Деловая литература',
-]
+)

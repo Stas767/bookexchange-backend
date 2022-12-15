@@ -23,22 +23,26 @@ class BookAuthor(models.Model):
         # Сделать так, чтобы возвращал слитно инициалы
 
 
-class PubAuthor(models.Model):
-    username = models.CharField(max_length=constants.NAME_DEFAULT_LENGTH)
-    first_name = models.CharField(max_length=constants.NAME_DEFAULT_LENGTH)
-    last_name = models.CharField(max_length=constants.NAME_DEFAULT_LENGTH)
-    father_name = models.CharField(max_length=constants.NAME_DEFAULT_LENGTH)
-    birth_date = models.DateTimeField(
-        'Date of birth',
-        auto_now_add=False,
-    )
+# class PubAuthor(models.Model):
+#     username = models.CharField(max_length=constants.NAME_DEFAULT_LENGTH)
+#     email = models.EmailField(max_length=80)
+#     first_name = models.CharField(max_length=constants.NAME_DEFAULT_LENGTH)
+#     last_name = models.CharField(max_length=constants.NAME_DEFAULT_LENGTH)
+#     father_name = models.CharField(max_length=constants.NAME_DEFAULT_LENGTH)
+#     birth_date = models.DateTimeField(
+#         'Date of birth',
+#         auto_now_add=False,
+#     )
 
-    def __str__(self):
-        return self.username  # Сделать так, чтобы возвращал слитно инициалы
+#     def __str__(self):
+#         return self.username  # Сделать так, чтобы возвращал слитно инициалы
 
 
 class Genre(models.Model):
-    genre_title = models.CharField(choices=constants.GENRES_RUS)
+    genre_title = models.CharField(
+        max_length=120,
+        choices=constants.GENRES_RUS
+        )
     slug = models.SlugField()
     description = models.TextField(
         max_length=1000,
@@ -67,14 +71,21 @@ class Book(models.Model):
     book_author = models.ForeignKey(
         BookAuthor,
         on_delete=models.CASCADE,
-        related_name='books',
+        related_name='author',
+    )
+    pub_author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='publisher',
     )
     condition = models.CharField(
+        max_length=120,
         choices=constants.CONDITIONS_RUS,
         verbose_name='Состояние книги',
         # help_text='Выберите из списка состояние данного экземпляра.'
         default='Укажите состояние книги',
     )
+    creation_date = models.DateField()
     pub_date = models.DateTimeField(
         'Дата публикации книги на платформе.',
         auto_now_add=True,
@@ -86,8 +97,8 @@ class Book(models.Model):
     )
     gentre = models.ForeignKey(
         Genre,
-        # on_delete=models.DO_NOTHING,
-        related_name='books',
+        on_delete=models.DO_NOTHING,
+        related_name='genres',
         blank=True,
         null=True
     )
