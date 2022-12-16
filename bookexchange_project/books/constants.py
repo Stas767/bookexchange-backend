@@ -1,4 +1,10 @@
-NAME_DEFAULT_LENGTH = 100
+NAME_DEFAULT_LENGTH = 80
+
+LANG = (
+    ('EN', 'English'),
+    ('RU', 'Russian'),
+    ('DE', 'Deutch'),
+)
 
 CONDITIONS_EN = (
     ('New'),

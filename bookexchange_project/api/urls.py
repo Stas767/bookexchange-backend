@@ -17,5 +17,5 @@ v1_router.register(r'genres', GenreViewSet, basename='genres')
 urlpatterns = [
     path('v1/', include(v1_router.urls)),
     path('v1/', include('djoser.urls')),  # Работа с пользователями
-    path('v1/', include('djoser.urls.jwt')),  # Работа с токенами
+    path('v1/auth/', include('djoser.urls.jwt')),  # Работа с токенами
 ]

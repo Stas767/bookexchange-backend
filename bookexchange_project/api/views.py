@@ -4,7 +4,7 @@ from books.models import BookAuthor, Book, Genre  # , User
 from rest_framework import viewsets, permissions, filters
 # , permissions, mixins, filters, serializers
 
-from serializers.serializers import (
+from .serializers import (
     BookSerializer,
     BookAuthorSerializer,
     GenreSerializer

@@ -19,7 +19,10 @@ class BookAuthor(models.Model):
     )
 
     def __str__(self):
-        return f'{self.first_name[0]}.{self.last_name}'
+        if self.father_name == '':
+            return f'{self.first_name[0]}.{self.last_name}'
+        else:
+            return f'{self.first_name[0]}.{self.father_name[0]}.{self.last_name}'
         # Сделать так, чтобы возвращал слитно инициалы
 
 
@@ -101,6 +104,19 @@ class Book(models.Model):
         related_name='genres',
         blank=True,
         null=True
+    )
+    downloadable = models.BooleanField(default=False)
+    # Обратить внимание, может надо выбрать другой тип поля для lang_id.
+    # ALL2Cart использует передачу индекса туда из... Мб модели
+    lang_id = models.CharField(
+        default=' ',
+        max_length=50,
+        choices=constants.LANG,
+    )
+
+    pages = models.IntegerField(
+        blank=True,
+        null=True,
     )
 
     def __str__(self):
