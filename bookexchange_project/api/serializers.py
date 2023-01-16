@@ -3,21 +3,21 @@ from rest_framework import serializers
 # from rest_framework.validators import UniqueTogetherValidator
 from djoser.serializers import UserSerializer
 
-from books.models import Book, BookAuthor, Genre, User
+from books.models import Book, BookAuthor, Genre, User, PubAuthor
 
 
 class CustomUserSerializer(UserSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'id', 'username', 'first_name', 'last_name')
+        fields = ('id', 'email', 'username')
 
 class PubAuthorSerializer(serializers.ModelSerializer):
     books = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
-        model = User
-        fields = ('id', 'username', 'username', 'books', 'birth_date')
+        model = PubAuthor
+        fields = ('id', 'username', 'books')
         ref_name = 'ReadOnlyUsers'
 
 
