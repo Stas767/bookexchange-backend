@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # 'corsheaders',
     'djoser',
+    'users.apps.UsersConfig',
     'books.apps.BooksConfig',
     'api.apps.ApiConfig',
 ]
@@ -123,6 +124,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+AUTH_USER_MODEL = 'users.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
