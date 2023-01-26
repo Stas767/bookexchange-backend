@@ -4,12 +4,19 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
+UserExchange = (
+    ('SUBWAY', 'Метро'),
+    ('MAIL', 'Почта'),
+    ('MEETING', 'При встрече')
+)
+
+
 class User(AbstractUser):
 
-    class UserExchange(models.TextChoices):
-        SUBWAY = 'Метро', 'В метро'
-        MAIL = 'Почта', 'По почте'
-        MEETING = 'При встрече', 'При встрече'
+    # class UserExchange(models.TextChoices):
+    #     SUBWAY = 'Метро', 'В метро'
+    #     MAIL = 'Почта', 'По почте'
+    #     MEETING = 'При встрече', 'При встрече'
 
     phone = models.IntegerField(
         max_length=10,
@@ -26,8 +33,8 @@ class User(AbstractUser):
     exchange = models.CharField(
         'Вариант обмена',
         max_length=20,
-        default=None,
-        choices=UserExchange.choices,
+        default=UserExchange[1],
+        choices=UserExchange,
     )
 
     def __str__(self) -> str:
