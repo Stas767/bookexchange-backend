@@ -7,6 +7,7 @@ class BookCard(models.Model):
 
     publisher = models.ForeignKey(
         User,
+        default=None,
         on_delete=models.CASCADE,
         related_name='books'
     )
@@ -66,6 +67,7 @@ class Favorites(models.Model):
     )
     user = models.ForeignKey(
         User,
+        default=None,
         on_delete=models.CASCADE,
         related_name='favs'
     )
