@@ -19,7 +19,7 @@ class User(AbstractUser):
     #     MEETING = 'При встрече', 'При встрече'
 
     phone = models.IntegerField(
-        max_length=10,
+        # max_length=10,
         default=9999999999,
         blank=True,
         help_text='Введите номер телефона.',
