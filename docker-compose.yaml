@@ -8,7 +8,7 @@ services:
     env_file:
       - ./.env
   web:
-    build: ./bookexchange_project
+    image: stack767/api_bookexchange:latest
     restart: always
     volumes:
       - static_value:/app/static/

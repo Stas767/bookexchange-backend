@@ -27,7 +27,7 @@ SECRET_KEY = 'lpwn@ehnda3jh(*rpr+am4&dvjlr^yawug-h*a!ysw@8xc^448'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['62.217.181.48', '127.0.0.1', 'localhost', 'web']
+ALLOWED_HOSTS = ['букшерр.рф', '62.217.181.48', '127.0.0.1', 'localhost', 'web']
 
 
 # Application definition
