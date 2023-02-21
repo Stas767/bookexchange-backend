@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Till deploy
 DEBUG = True
 
 if DEBUG:
@@ -15,7 +14,6 @@ else:
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
-# Till deploy
 ALLOWED_HOSTS = ['*']
 
 DJANGO_APPS = [
@@ -27,7 +25,6 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-# drf_yasg, corsheaders
 THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
@@ -46,7 +43,6 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -118,7 +114,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.CustomUser'
 
 STATIC_URL = '/backend_static/'
 STATIC_ROOT = BASE_DIR.joinpath('backend_static')
@@ -141,28 +137,3 @@ REST_FRAMEWORK = {
 
     'PAGE_SIZE': 12,
 }
-
-DJOSER = {
-    # 'SERIALIZERS': {
-    #     'user_create': 'api.serializers.CustomUserCreateSerializer',
-    #     'user': 'api.serializers.CustomUserSerializer',
-    #     'current_user': 'api.serializers.CustomUserSerializer',
-    # },
-    # 'PERMISSIONS': {
-    #     'user': ['rest_framework.permissions.IsAuthenticatedOrReadOnly'],
-    #     'user_list': ['rest_framework.permissions.IsAuthenticatedOrReadOnly'],
-    # },
-    # 'HIDE_USERS': False,
-}
-
-# SIMPLE_JWT = {
-#    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
-#    'AUTH_HEADER_TYPES': ('Bearer',),
-# }
-
-
-# CORS_ORIGIN_ALLOW_ALL = True
-# CORS_URLS_REGEX = r'^/api/.*$'
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',
-# ]
