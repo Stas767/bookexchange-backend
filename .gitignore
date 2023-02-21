@@ -109,7 +109,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-migrations/
 
 # Spyder project settings
 .spyderproject
@@ -129,21 +128,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Папки, создаваемые средой разработки
+# .idea
 .idea
-.DS_Store
-.AppleDouble
-.LSOverride
 
-*.sublime-project
-*.sublime-workspace
+# requirements-dev
+requirements-dev.txt
 
-.vscode/
-*.code-workspace
-
-# Local History for Visual Studio Code
-.history/
-
-.mypy_cache
-
-# папки со статикой и медиа
+# media and static
+backend_media/
+backend_static/
