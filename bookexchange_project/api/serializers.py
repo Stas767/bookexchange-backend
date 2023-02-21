@@ -1,9 +1,9 @@
-from rest_framework import serializers
 # не знаю что это такое, пока оставляю
 from djoser.serializers import UserSerializer
+from rest_framework import serializers
 
-from users.models import User
 from books.models import BookCard, Favorites
+from users.models import User
 
 
 class CustomUserSerializer(UserSerializer):
