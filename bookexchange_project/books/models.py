@@ -52,7 +52,7 @@ class BookCard(models.Model):
         help_text='Выберите из списка состояние данного экземпляра.',
         default='Укажите состояние книги',
     )
-    year = models.IntegerField(max_length=4, default=1999)
+    year = models.IntegerField(default=1999)
 
     def __str__(self):
         return self.book_title
