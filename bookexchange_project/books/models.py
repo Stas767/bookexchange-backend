@@ -1,58 +1,80 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 from books import constants
-from users.models import User
+
+
+User = get_user_model()
+
 
 class BookCard(models.Model):
+    '''Модель книги.'''
 
-    publisher = models.ForeignKey(
+    owner = models.ForeignKey(
         User,
-        default=None,
         on_delete=models.CASCADE,
-        related_name='books'
+        related_name='books',
+        verbose_name='Владелец книги'
     )
-    book_title = models.CharField(
+    title = models.CharField(
+        'Название книги',
         max_length=255,
-        verbose_name='Название книги',
         help_text='Введите название произведения'
     )
-    author_name = models.CharField(
+    # Это поле переписать на FK таблицы с автором. Таблицу сделать. 
+    author = models.CharField(
+        'Автор книги',
         max_length=255,
-        blank=False,
-        verbose_name='Автор книги',
         help_text='Введите имя автора'
     )
+    # Аналогично
     genre = models.CharField(
+        'Жанр',
         max_length=255,
         blank=True,
         null=True,
-        verbose_name='Жанр',
         help_text='Какой жанр у книги?'
     )
-    book_description = models.TextField(
+    description = models.TextField(
+        'Описание книги',
         max_length=1000,
-        verbose_name='Описание книги',
+        blank=True,
+        null=True,
         help_text='О чем эта книга?'
     )
-    book_image = models.ImageField(
-        upload_to='books/',
+    # Тут нужно указать актуальный путь для медиа.
+    image = models.ImageField(
+        'Фотография книги',
+        upload_to='backend_media/book_cover/',
         null=True,
         blank=True,
         help_text='Приложите фотографию книги'
     )
     isbn = models.CharField(
+        'International Standard Book Number',
         max_length=100,
-        verbose_name='International Standard Book Number',
+        null=True,
+        blank=True,
         help_text='ISBN - это уникальный индентификатор книги. Он може быть указан на первой странице или с обратной стороны книги.',
     )
     condition = models.CharField(
-        max_length=120,
+        'Состояние книги',
+        null=True,
+        blank=True,
+        # Как на твой взгляд, приемлимо так делать choise?
         choices=constants.CONDITIONS_RUS,
-        verbose_name='Состояние книги',
-        help_text='Выберите из списка состояние данного экземпляра.',
-        default='Укажите состояние книги',
+        help_text='Выберите из списка состояние данного экземпляра.'
     )
-    year = models.IntegerField(default=1999)
+    year = models.IntegerField(
+        'Год издания',
+        null=True,
+        blank=True,
+        default=1999
+    )
+    pub_date = models.DateTimeField(
+        'Дата и время публикации',
+        auto_now_add=True
+    )
 
     def __str__(self):
         return self.book_title
