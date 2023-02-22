@@ -137,3 +137,6 @@ requirements-dev.txt
 # media and static
 backend_media/
 backend_static/
+
+# vscode
+.vscode/
