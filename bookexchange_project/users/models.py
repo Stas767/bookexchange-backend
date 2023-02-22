@@ -1,20 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Эти choise нужно перенести в другой файл. После пула актуальной структуры проекта исправлю.
-ADMIN = 'admin'
-USER = 'user'
 
-ROLE = (
-    (USER, 'Пользователь'),
-    (ADMIN, 'Администратор')
-)
-
-SUBWAY = 'subway'
-MAIL = 'mail'
-MEETING = 'meeting'
-
-UserExchange = (
+ExchangeChoices = (
     ('SUBWAY', 'Метро'),
     ('MAIL', 'Почта'),
     ('MEETING', 'При встрече')
@@ -24,10 +12,6 @@ UserExchange = (
 class CustomUser(AbstractUser):
     '''Кастомная модель пользователя'''
 
-    username = models.CharField(
-        'Имя',
-        max_length=50
-    )
     phone = models.CharField(
         'Телефон',
         blank=True,
@@ -52,28 +36,11 @@ class CustomUser(AbstractUser):
     exchange = models.CharField(
         'Вариант обмена',
         max_length=20,
-        default=SUBWAY,
-        choices=UserExchange,
+        choices=ExchangeChoices,
     )
     email = models.EmailField(
         'Адрес электронной почты',
-        unique=True,
-        max_length=254
-    )
-    # Это поле добавил от себя, так в любом случае нужен админ сайта.
-    role = models.CharField(
-        'Роль пользователя',
-        max_length=10,
-        choices=ROLE,
-        default=USER,
-        help_text=(
-            'Администратор или пользователь. По умолчанию пользователь.'
-        ),
-        blank=True
-    )
-    password = models.CharField(
-        'Пароль',
-        max_length=150
+        unique=True
     )
 
     def __str__(self) -> str:
@@ -89,8 +56,3 @@ class CustomUser(AbstractUser):
         ]
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
-
-    @property
-    def is_admin(self):
-
-        return bool(self.role == ADMIN)
