@@ -1,9 +1,12 @@
 # не знаю что это такое, пока оставляю
 from djoser.serializers import UserSerializer
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from books.models import BookCard, Favorites
-from users.models import User
+from books.models import BookCard
+
+
+User = get_user_model()
 
 
 class CustomUserSerializer(UserSerializer):
@@ -20,9 +23,3 @@ class BookCardSerializers(serializers.ModelSerializer):
             'author_name', 'genre', 'book_description',
             'book_image', 'isbn', 'condition', 'year'
         )
-
-
-class FavoritesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Favorites
-        fields = ('book_card', 'user')

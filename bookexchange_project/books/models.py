@@ -21,19 +21,13 @@ class BookCard(models.Model):
         max_length=255,
         help_text='Введите название произведения'
     )
-    # Это поле переписать на FK таблицы с автором. Таблицу сделать. 
-    author = models.CharField(
-        'Автор книги',
-        max_length=255,
-        help_text='Введите имя автора'
+    author = models.ManyToManyField(
+        'Authors',
+        verbose_name='Автор книги',
     )
-    # Аналогично
-    genre = models.CharField(
-        'Жанр',
-        max_length=255,
-        blank=True,
-        null=True,
-        help_text='Какой жанр у книги?'
+    genre = models.ManyToManyField(
+        'Genres',
+        verbose_name='Жанр'
     )
     description = models.TextField(
         'Описание книги',
@@ -42,7 +36,6 @@ class BookCard(models.Model):
         null=True,
         help_text='О чем эта книга?'
     )
-    # Тут нужно указать актуальный путь для медиа.
     image = models.ImageField(
         'Фотография книги',
         upload_to='backend_media/book_cover/',
@@ -61,6 +54,7 @@ class BookCard(models.Model):
         'Состояние книги',
         null=True,
         blank=True,
+        max_length=50,
         # Как на твой взгляд, приемлимо так делать choise?
         choices=constants.CONDITIONS_RUS,
         help_text='Выберите из списка состояние данного экземпляра.'
@@ -75,12 +69,21 @@ class BookCard(models.Model):
         'Дата и время публикации',
         auto_now_add=True
     )
+    faforites = models.ManyToManyField(
+        'Faforites',
+        verbose_name='Избранное'
+    )
+
+    class Meta:
+        verbose_name = 'Карточка книги'
+        verbose_name_plural = 'Карточки книг'
 
     def __str__(self):
-        return self.book_title
+        return self.title[:40]
 
 
-class Favorites(models.Model):
+class Faforites(models.Model):
+    '''Избраное.'''
 
     book_card = models.ForeignKey(
         BookCard,
@@ -93,3 +96,36 @@ class Favorites(models.Model):
         on_delete=models.CASCADE,
         related_name='favs'
     )
+
+    class Meta:
+        verbose_name = 'Избранное'
+        verbose_name_plural = 'Избранные'
+
+
+class Authors(models.Model):
+    '''Авторы книг.'''
+
+    first_name = models.CharField('Имя', max_length=50)
+    last_name = models.CharField('Фамилия', max_length=50)
+    surname = models.CharField('Отчество', max_length=50)
+
+    class Meta:
+        verbose_name = 'Автор'
+        verbose_name_plural = 'Авторы'
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
+
+class Genres(models.Model):
+    '''Жанры книг.'''
+
+    name = models.CharField('Жанр', max_length=50)
+    slug = models.SlugField('Slug', max_length=50, unique=True)
+
+    class Meta:
+        verbose_name = 'Жанр'
+        verbose_name_plural = 'Жанры'
+
+    def __str__(self):
+        return self.name

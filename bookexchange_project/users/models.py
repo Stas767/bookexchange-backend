@@ -14,6 +14,7 @@ class CustomUser(AbstractUser):
 
     phone = models.CharField(
         'Телефон',
+        max_length=50,
         blank=True,
         null=True
     )

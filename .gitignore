@@ -140,3 +140,6 @@ backend_static/
 
 # vscode
 .vscode/
+
+# Временно добавлю миграции
+migrations/
