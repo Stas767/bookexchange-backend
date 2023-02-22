@@ -1,29 +1,33 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 from books import constants
-from users.models import CustomUser
+
+
+User = get_user_model()
 
 
 class BookCard(models.Model):
     '''Модель книги.'''
 
-    publisher = models.ForeignKey(
-        CustomUser,
-        default=None,
+    owner = models.ForeignKey(
+        User,
         on_delete=models.CASCADE,
         related_name='books',
         verbose_name='Владелец книги'
     )
-    book_title = models.CharField(
+    title = models.CharField(
         'Название книги',
         max_length=255,
         help_text='Введите название произведения'
     )
-    author_name = models.CharField(
+    # Это поле переписать на FK таблицы с автором. Таблицу сделать. 
+    author = models.CharField(
         'Автор книги',
         max_length=255,
         help_text='Введите имя автора'
     )
+    # Аналогично
     genre = models.CharField(
         'Жанр',
         max_length=255,
@@ -31,7 +35,7 @@ class BookCard(models.Model):
         null=True,
         help_text='Какой жанр у книги?'
     )
-    book_description = models.TextField(
+    description = models.TextField(
         'Описание книги',
         max_length=1000,
         blank=True,
@@ -39,9 +43,9 @@ class BookCard(models.Model):
         help_text='О чем эта книга?'
     )
     # Тут нужно указать актуальный путь для медиа.
-    book_image = models.ImageField(
+    image = models.ImageField(
         'Фотография книги',
-        upload_to='books/',
+        upload_to='backend_media/book_cover/',
         null=True,
         blank=True,
         help_text='Приложите фотографию книги'
@@ -67,6 +71,10 @@ class BookCard(models.Model):
         blank=True,
         default=1999
     )
+    pub_date = models.DateTimeField(
+        'Дата и время публикации',
+        auto_now_add=True
+    )
 
     def __str__(self):
         return self.book_title
@@ -80,7 +88,7 @@ class Favorites(models.Model):
         related_name='favs'
     )
     user = models.ForeignKey(
-        CustomUser,
+        User,
         default=None,
         on_delete=models.CASCADE,
         related_name='favs'
