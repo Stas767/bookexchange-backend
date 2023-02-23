@@ -59,7 +59,7 @@ class Advert(models.Model):
         verbose_name_plural = 'Объявления'
 
     def __str__(self):
-        return self.id
+        return self.title[:40]
 
 
 class Book(models.Model):
@@ -97,7 +97,7 @@ class Book(models.Model):
         verbose_name_plural = 'Книги'
 
     def __str__(self):
-        return self.id
+        return self.title[:40]
 
 
 class Author(models.Model):
@@ -120,7 +120,7 @@ class Author(models.Model):
         verbose_name_plural = 'Авторы'
 
     def __str__(self):
-        return self.id
+        return f'{self.last_name} {self.first_name}'
 
 
 class Genre(models.Model):
@@ -135,7 +135,7 @@ class Genre(models.Model):
         verbose_name_plural = 'Жанры'
 
     def __str__(self):
-        return self.id
+        return self.name
 
 
 class Favorites(models.Model):
@@ -144,14 +144,14 @@ class Favorites(models.Model):
         User, on_delete=models.CASCADE, verbose_name='Пользователь',
         related_name='favorites'
     )
-    book = models.ForeignKey(
-        Book, on_delete=models.CASCADE, verbose_name='Книга',
+    advert = models.ForeignKey(
+        Advert, on_delete=models.CASCADE, verbose_name='Объявление',
         related_name='favorites'
     )
 
     class Meta:
         verbose_name = 'Избранное'
-        verbose_name_plural = 'Избранные'
+        verbose_name_plural = 'Избранное'
 
     def __str__(self):
-        return self.id
+        return f'{self.user_id} <--> {self.advert_id}'
