@@ -47,7 +47,6 @@ class CustomUser(AbstractUser):
     def __str__(self) -> str:
         return f'{self.username}'
 
-# Этот constraints тоже под вопросом. Вроде все логично, не я его писал. Требует коммента.
     class Meta:
         ordering = ['-id']
         verbose_name = 'Пользователь'
