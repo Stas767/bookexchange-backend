@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from .models import BookCard, Faforites, Author, Genre
+from books.models import Advert, Author, Book, Favorites, Genre
 
-
-admin.site.register(BookCard)
-admin.site.register(Faforites)
+admin.site.register(Advert)
+admin.site.register(Book)
 admin.site.register(Author)
 admin.site.register(Genre)
+admin.site.register(Favorites)
