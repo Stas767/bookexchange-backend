@@ -22,12 +22,14 @@ class BookCard(models.Model):
         help_text='Введите название произведения'
     )
     author = models.ManyToManyField(
-        'Authors',
+        'Author',
         verbose_name='Автор книги',
+        related_name='books'
     )
     genre = models.ManyToManyField(
-        'Genres',
-        verbose_name='Жанр'
+        'Genre',
+        verbose_name='Жанр',
+        related_name='books'
     )
     description = models.TextField(
         'Описание книги',
@@ -38,7 +40,7 @@ class BookCard(models.Model):
     )
     image = models.ImageField(
         'Фотография книги',
-        upload_to='backend_media/book_cover/',
+        upload_to='book_cover/',
         null=True,
         blank=True,
         help_text='Приложите фотографию книги'
@@ -55,23 +57,17 @@ class BookCard(models.Model):
         null=True,
         blank=True,
         max_length=50,
-        # Как на твой взгляд, приемлимо так делать choise?
         choices=constants.CONDITIONS_RUS,
         help_text='Выберите из списка состояние данного экземпляра.'
     )
     year = models.IntegerField(
         'Год издания',
         null=True,
-        blank=True,
-        default=1999
+        blank=True
     )
     pub_date = models.DateTimeField(
         'Дата и время публикации',
         auto_now_add=True
-    )
-    faforites = models.ManyToManyField(
-        'Faforites',
-        verbose_name='Избранное'
     )
 
     class Meta:
@@ -88,21 +84,23 @@ class Faforites(models.Model):
     book_card = models.ForeignKey(
         BookCard,
         on_delete=models.CASCADE,
-        related_name='favs'
+        related_name='favorites'
     )
     user = models.ForeignKey(
         User,
-        default=None,
         on_delete=models.CASCADE,
-        related_name='favs'
+        related_name='favorites'
     )
 
     class Meta:
         verbose_name = 'Избранное'
         verbose_name_plural = 'Избранные'
 
+    def __str__(self):
+        return f'{self.book_card} - {self.user}'
 
-class Authors(models.Model):
+
+class Author(models.Model):
     '''Авторы книг.'''
 
     first_name = models.CharField('Имя', max_length=50)
@@ -114,10 +112,10 @@ class Authors(models.Model):
         verbose_name_plural = 'Авторы'
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+        return f'{self.first_name} {self.surname} {self.last_name}'
 
 
-class Genres(models.Model):
+class Genre(models.Model):
     '''Жанры книг.'''
 
     name = models.CharField('Жанр', max_length=50)
