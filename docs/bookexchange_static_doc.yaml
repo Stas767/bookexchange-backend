@@ -3,6 +3,167 @@ info:
   title: ''
   version: ''
 paths:
+  /api/v1/athors/:
+    get:
+      operationId: listAuthors
+      description: ''
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=4
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=2
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Author'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createAuthor
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Author'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+          description: ''
+      tags:
+      - api
+  /api/v1/athors/{id}/:
+    get:
+      operationId: retrieveAuthor
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u0410\u0432\u0442\u043E\
+          \u0440."
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateAuthor
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u0410\u0432\u0442\u043E\
+          \u0440."
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Author'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateAuthor
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u0410\u0432\u0442\u043E\
+          \u0440."
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Author'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyAuthor
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u0410\u0432\u0442\u043E\
+          \u0440."
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
   /api/v1/books/:
     get:
       operationId: listBookCards
@@ -37,7 +198,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: '#/components/schemas/BookCards'
+                      $ref: '#/components/schemas/BookCard'
           description: ''
       tags:
       - api
@@ -49,19 +210,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BookCards'
+              $ref: '#/components/schemas/BookCard'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/BookCards'
+              $ref: '#/components/schemas/BookCard'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/BookCards'
+              $ref: '#/components/schemas/BookCard'
       responses:
         '201':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookCards'
+                $ref: '#/components/schemas/BookCard'
           description: ''
       tags:
       - api
@@ -73,7 +234,8 @@ paths:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this book card.
+        description: "A unique integer value identifying this \u041A\u0430\u0440\u0442\
+          \u043E\u0447\u043A\u0430 \u043A\u043D\u0438\u0433\u0438."
         schema:
           type: string
       responses:
@@ -81,7 +243,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookCards'
+                $ref: '#/components/schemas/BookCard'
           description: ''
       tags:
       - api
@@ -92,26 +254,27 @@ paths:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this book card.
+        description: "A unique integer value identifying this \u041A\u0430\u0440\u0442\
+          \u043E\u0447\u043A\u0430 \u043A\u043D\u0438\u0433\u0438."
         schema:
           type: string
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BookCards'
+              $ref: '#/components/schemas/BookCard'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/BookCards'
+              $ref: '#/components/schemas/BookCard'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/BookCards'
+              $ref: '#/components/schemas/BookCard'
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookCards'
+                $ref: '#/components/schemas/BookCard'
           description: ''
       tags:
       - api
@@ -122,26 +285,27 @@ paths:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this book card.
+        description: "A unique integer value identifying this \u041A\u0430\u0440\u0442\
+          \u043E\u0447\u043A\u0430 \u043A\u043D\u0438\u0433\u0438."
         schema:
           type: string
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BookCards'
+              $ref: '#/components/schemas/BookCard'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/BookCards'
+              $ref: '#/components/schemas/BookCard'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/BookCards'
+              $ref: '#/components/schemas/BookCard'
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookCards'
+                $ref: '#/components/schemas/BookCard'
           description: ''
       tags:
       - api
@@ -152,7 +316,8 @@ paths:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this book card.
+        description: "A unique integer value identifying this \u041A\u0430\u0440\u0442\
+          \u043E\u0447\u043A\u0430 \u043A\u043D\u0438\u0433\u0438."
         schema:
           type: string
       responses:
@@ -230,7 +395,8 @@ paths:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this favorites.
+        description: "A unique integer value identifying this \u0418\u0437\u0431\u0440\
+          \u0430\u043D\u043D\u043E\u0435."
         schema:
           type: string
       responses:
@@ -249,7 +415,8 @@ paths:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this favorites.
+        description: "A unique integer value identifying this \u0418\u0437\u0431\u0440\
+          \u0430\u043D\u043D\u043E\u0435."
         schema:
           type: string
       requestBody:
@@ -279,7 +446,8 @@ paths:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this favorites.
+        description: "A unique integer value identifying this \u0418\u0437\u0431\u0440\
+          \u0430\u043D\u043D\u043E\u0435."
         schema:
           type: string
       requestBody:
@@ -309,7 +477,169 @@ paths:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this favorites.
+        description: "A unique integer value identifying this \u0418\u0437\u0431\u0440\
+          \u0430\u043D\u043D\u043E\u0435."
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/v1/genres/:
+    get:
+      operationId: listGenres
+      description: ''
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=4
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=2
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Genre'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createGenre
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Genre'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Genre'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Genre'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genre'
+          description: ''
+      tags:
+      - api
+  /api/v1/genres/{id}/:
+    get:
+      operationId: retrieveGenre
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u0416\u0430\u043D\u0440\
+          ."
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genre'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateGenre
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u0416\u0430\u043D\u0440\
+          ."
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Genre'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Genre'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Genre'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genre'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateGenre
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u0416\u0430\u043D\u0440\
+          ."
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Genre'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Genre'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Genre'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genre'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyGenre
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: "A unique integer value identifying this \u0416\u0430\u043D\u0440\
+          ."
         schema:
           type: string
       responses:
@@ -319,7 +649,7 @@ paths:
       - api
   /api/v1/users/:
     get:
-      operationId: listUsers
+      operationId: listCustomUsers
       description: ''
       parameters:
       - name: page
@@ -356,7 +686,7 @@ paths:
       tags:
       - api
     post:
-      operationId: createUser
+      operationId: createCustomUser
       description: ''
       parameters: []
       requestBody:
@@ -381,7 +711,7 @@ paths:
       - api
   /api/v1/users/me/:
     get:
-      operationId: meUser
+      operationId: meCustomUser
       description: ''
       parameters: []
       responses:
@@ -394,7 +724,7 @@ paths:
       tags:
       - api
     put:
-      operationId: meUserPut
+      operationId: meCustomUser
       description: ''
       parameters: []
       requestBody:
@@ -418,7 +748,7 @@ paths:
       tags:
       - api
     patch:
-      operationId: meUser
+      operationId: meCustomUser
       description: ''
       parameters: []
       requestBody:
@@ -442,7 +772,7 @@ paths:
       tags:
       - api
     delete:
-      operationId: meUserDelete
+      operationId: meCustomUser
       description: ''
       parameters: []
       responses:
@@ -452,13 +782,14 @@ paths:
       - api
   /api/v1/users/{id}/:
     get:
-      operationId: retrieveUser
+      operationId: retrieveCustomUser
       description: ''
       parameters:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this user.
+        description: "A unique integer value identifying this \u041F\u043E\u043B\u044C\
+          \u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C."
         schema:
           type: string
       responses:
@@ -471,13 +802,14 @@ paths:
       tags:
       - api
     put:
-      operationId: updateUser
+      operationId: updateCustomUser
       description: ''
       parameters:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this user.
+        description: "A unique integer value identifying this \u041F\u043E\u043B\u044C\
+          \u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C."
         schema:
           type: string
       requestBody:
@@ -501,13 +833,14 @@ paths:
       tags:
       - api
     patch:
-      operationId: partialUpdateUser
+      operationId: partialUpdateCustomUser
       description: ''
       parameters:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this user.
+        description: "A unique integer value identifying this \u041F\u043E\u043B\u044C\
+          \u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C."
         schema:
           type: string
       requestBody:
@@ -531,13 +864,14 @@ paths:
       tags:
       - api
     delete:
-      operationId: destroyUser
+      operationId: destroyCustomUser
       description: ''
       parameters:
       - name: id
         in: path
         required: true
-        description: A unique integer value identifying this user.
+        description: "A unique integer value identifying this \u041F\u043E\u043B\u044C\
+          \u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C."
         schema:
           type: string
       responses:
@@ -547,7 +881,7 @@ paths:
       - api
   /api/v1/users/activation/:
     post:
-      operationId: activationUser
+      operationId: activationCustomUser
       description: ''
       parameters: []
       requestBody:
@@ -572,7 +906,7 @@ paths:
       - api
   /api/v1/users/resend_activation/:
     post:
-      operationId: resendActivationUser
+      operationId: resendActivationCustomUser
       description: ''
       parameters: []
       requestBody:
@@ -597,7 +931,7 @@ paths:
       - api
   /api/v1/users/reset_password/:
     post:
-      operationId: resetPasswordUser
+      operationId: resetPasswordCustomUser
       description: ''
       parameters: []
       requestBody:
@@ -622,7 +956,7 @@ paths:
       - api
   /api/v1/users/reset_password_confirm/:
     post:
-      operationId: resetPasswordConfirmUser
+      operationId: resetPasswordConfirmCustomUser
       description: ''
       parameters: []
       requestBody:
@@ -647,7 +981,7 @@ paths:
       - api
   /api/v1/users/reset_username/:
     post:
-      operationId: resetUsernameUser
+      operationId: resetUsernameCustomUser
       description: ''
       parameters: []
       requestBody:
@@ -672,7 +1006,7 @@ paths:
       - api
   /api/v1/users/reset_username_confirm/:
     post:
-      operationId: resetUsernameConfirmUser
+      operationId: resetUsernameConfirmCustomUser
       description: ''
       parameters: []
       requestBody:
@@ -697,7 +1031,7 @@ paths:
       - api
   /api/v1/users/set_password/:
     post:
-      operationId: setPasswordUser
+      operationId: setPasswordCustomUser
       description: ''
       parameters: []
       requestBody:
@@ -722,7 +1056,7 @@ paths:
       - api
   /api/v1/users/set_username/:
     post:
-      operationId: setUsernameUser
+      operationId: setUsernameCustomUser
       description: ''
       parameters: []
       requestBody:
@@ -831,53 +1165,45 @@ paths:
       - api
 components:
   schemas:
-    BookCards:
+    Author:
       type: object
       properties:
         id:
           type: integer
           readOnly: true
-        publisher:
+        first_name:
+          type: string
+          maxLength: 50
+        last_name:
+          type: string
+          maxLength: 50
+        surname:
+          type: string
+          maxLength: 50
+      required:
+      - first_name
+      - last_name
+      - surname
+    BookCard:
+      type: object
+      properties:
+        id:
           type: integer
-        book_title:
+          readOnly: true
+        title:
           type: string
-          description: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043D\u0430\u0437\
-            \u0432\u0430\u043D\u0438\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u0435\
-            \u0434\u0435\u043D\u0438\u044F"
           maxLength: 255
-        author_name:
-          type: string
-          description: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0438\u043C\u044F\
-            \ \u0430\u0432\u0442\u043E\u0440\u0430"
-          maxLength: 255
-        genre:
+        description:
           type: string
           nullable: true
-          description: "\u041A\u0430\u043A\u043E\u0439 \u0436\u0430\u043D\u0440 \u0443\
-            \ \u043A\u043D\u0438\u0433\u0438?"
-          maxLength: 255
-        book_description:
-          type: string
-          description: "\u041E \u0447\u0435\u043C \u044D\u0442\u0430 \u043A\u043D\u0438\
-            \u0433\u0430?"
           maxLength: 1000
-        book_image:
+        image:
           type: string
           format: binary
           nullable: true
-          description: "\u041F\u0440\u0438\u043B\u043E\u0436\u0438\u0442\u0435 \u0444\
-            \u043E\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u044E \u043A\u043D\u0438\
-            \u0433\u0438"
         isbn:
           type: string
-          description: "ISBN - \u044D\u0442\u043E \u0443\u043D\u0438\u043A\u0430\u043B\
-            \u044C\u043D\u044B\u0439 \u0438\u043D\u0434\u0435\u043D\u0442\u0438\u0444\
-            \u0438\u043A\u0430\u0442\u043E\u0440 \u043A\u043D\u0438\u0433\u0438. \u041E\
-            \u043D \u043C\u043E\u0436\u0435 \u0431\u044B\u0442\u044C \u0443\u043A\u0430\
-            \u0437\u0430\u043D \u043D\u0430 \u043F\u0435\u0440\u0432\u043E\u0439 \u0441\
-            \u0442\u0440\u0430\u043D\u0438\u0446\u0435 \u0438\u043B\u0438 \u0441 \u043E\
-            \u0431\u0440\u0430\u0442\u043D\u043E\u0439 \u0441\u0442\u043E\u0440\u043E\
-            \u043D\u044B \u043A\u043D\u0438\u0433\u0438."
+          nullable: true
           maxLength: 100
         condition:
           enum:
@@ -889,26 +1215,58 @@ components:
           - "\u041F\u0440\u0430\u043A\u0442\u0438\u0447\u0435\u0441\u043A\u0438 \u043F\
             \u0440\u0438\u0435\u043C\u043B\u0435\u043C\u043E\u0435"
           type: string
-          description: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u0437\
-            \ \u0441\u043F\u0438\u0441\u043A\u0430 \u0441\u043E\u0441\u0442\u043E\u044F\
-            \u043D\u0438\u0435 \u0434\u0430\u043D\u043D\u043E\u0433\u043E \u044D\u043A\
-            \u0437\u0435\u043C\u043F\u043B\u044F\u0440\u0430."
+          nullable: true
         year:
           type: integer
+          nullable: true
+        pub_date:
+          type: string
+          format: date-time
+          readOnly: true
+        owner:
+          type: integer
+        author:
+          type: array
+          items:
+            type: integer
+        genre:
+          type: array
+          items:
+            type: integer
       required:
-      - book_title
-      - author_name
-      - book_description
-      - isbn
+      - title
+      - owner
+      - author
+      - genre
     Favorites:
       type: object
       properties:
+        id:
+          type: integer
+          readOnly: true
         book_card:
           type: integer
         user:
           type: integer
       required:
       - book_card
+      - user
+    Genre:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        slug:
+          type: string
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - name
+      - slug
     User:
       type: object
       properties:
@@ -924,6 +1282,8 @@ components:
           readOnly: true
           description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
             only.
+      required:
+      - email
     UserCreate:
       type: object
       properties:
@@ -935,7 +1295,7 @@ components:
           type: string
           description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
             only.
-          pattern: ^[\w.@+-]+$
+          pattern: ^[\w.@+-]+\z
           maxLength: 150
         id:
           type: integer
@@ -944,6 +1304,7 @@ components:
           type: string
           writeOnly: true
       required:
+      - email
       - username
       - password
     Activation:
@@ -984,7 +1345,7 @@ components:
           type: string
           description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
             only.
-          pattern: ^[\w.@+-]+$
+          pattern: ^[\w.@+-]+\z
           maxLength: 150
       required:
       - new_username
@@ -1007,7 +1368,7 @@ components:
           type: string
           description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
             only.
-          pattern: ^[\w.@+-]+$
+          pattern: ^[\w.@+-]+\z
           maxLength: 150
       required:
       - current_password

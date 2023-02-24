@@ -1,25 +1,53 @@
-# не знаю что это такое, пока оставляю
-from djoser.serializers import UserSerializer
 from django.contrib.auth import get_user_model
+from djoser.serializers import UserSerializer
 from rest_framework import serializers
 
-from books.models import BookCard
-
+from books.models import Advert, Author, Book, Favorites, Genre
 
 User = get_user_model()
 
 
 class CustomUserSerializer(UserSerializer):
-    class Meta:
+
+    class Mets:
         model = User
-        fields = ('id', 'phone', 'city', 'exchange')
+        fields = '__all__'
 
 
-class BookCardSerializers(serializers.ModelSerializer):
+class AuthorSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = BookCard
-        fields = (
-            'id', 'publisher', 'book_title',
-            'author_name', 'genre', 'book_description',
-            'book_image', 'isbn', 'condition', 'year'
-        )
+        model = Author
+        fields = '__all__'
+
+
+class GenreSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Genre
+        fields = '__all__'
+
+
+class BookSerializer(serializers.ModelSerializer):
+    authors = AuthorSerializer(many=True)
+    genres = GenreSerializer(many=True)
+
+    class Meta:
+        model = Book
+        fields = '__all__'
+
+
+class AdvertSerializer(serializers.ModelSerializer):
+    owner = CustomUserSerializer()
+    book = BookSerializer()
+
+    class Meta:
+        model = Advert
+        fields = '__all__'
+
+
+class FavoritesSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Favorites
+        fields = '__all__'

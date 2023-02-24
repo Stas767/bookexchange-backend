@@ -1,19 +1,24 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from api.views import BookCardViewSet
+from api.views import get_doc_shema_view
+from api.views import (AdvertViewSet, AuthorViewSet, BookViewSet,
+                       FavoritesViewSet, GenreViewSet)
 
-# from djoser.views import UserViewSet
-
-
-v1_router = DefaultRouter()
-v1_router.register(r'books', BookCardViewSet)
-# v1_router.register(r'favorites', FavoritesViewSet)
-# v1_router.register(r'signup', UserViewSet, basename='signup')
-
+router = DefaultRouter()
+router.register(r'adverts', AdvertViewSet)
+router.register(r'authors', AuthorViewSet)
+router.register(r'books', BookViewSet)
+router.register(r'favorites', FavoritesViewSet)
+router.register(r'genres', GenreViewSet)
 
 urlpatterns = [
-    path('v1/', include(v1_router.urls)),
-    path('v1/', include('djoser.urls')),  # Работа с пользователями/
-    path('v1/auth/', include('djoser.urls.jwt')),  # Работа с токенами
+    path('', include(router.urls)),
+
+    path(
+        'docs/dynamic/', get_doc_shema_view().with_ui('redoc', cache_timeout=0)
+    ),
+
+    path('', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
 ]
