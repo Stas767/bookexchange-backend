@@ -7,7 +7,7 @@ from api.views import (AdvertViewSet, AuthorViewSet, BookViewSet,
 
 router = DefaultRouter()
 router.register(r'adverts', AdvertViewSet)
-router.register(r'athors', AuthorViewSet)
+router.register(r'authors', AuthorViewSet)
 router.register(r'books', BookViewSet)
 router.register(r'favorites', FavoritesViewSet)
 router.register(r'genres', GenreViewSet)
@@ -20,5 +20,5 @@ urlpatterns = [
     ),
 
     path('', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
+    path('auth/', include('djoser.urls.authtoken')),
 ]
