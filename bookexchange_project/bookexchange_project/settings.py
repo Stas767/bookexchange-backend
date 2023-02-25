@@ -136,7 +136,7 @@ REST_FRAMEWORK = {
         'rest_framework.pagination.PageNumberPagination'
     ),
 
-    'PAGE_SIZE': 12,
+    'PAGE_SIZE': 9,
 }
 
 SHORT_FIELD_LENGTH = 50
