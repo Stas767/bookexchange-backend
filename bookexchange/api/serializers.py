@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from djoser.serializers import UserSerializer
 from rest_framework import serializers
 
-from books.models import Advert, Author, Book, BookCard, Favorites, Genre
+from books.models import Author, BookCard, Favorites, Genre
 
 User = get_user_model()
 
@@ -11,52 +11,38 @@ class CustomUserSerializer(UserSerializer):
 
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ('email', 'phone', 'city', 'subway', 'exchange', )
 
 
 class AuthorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Author
-        fields = '__all__'
+        fields = ('first_name', 'surname', 'last_name', )
 
 
 class GenreSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Genre
-        fields = '__all__'
-
-
-class BookSerializer(serializers.ModelSerializer):
-    authors = AuthorSerializer(many=True)
-    genres = GenreSerializer(many=True)
-
-    class Meta:
-        model = Book
-        fields = '__all__'
+        fields = ('name', 'slug', )
 
 
 class BookCardSerializer(serializers.ModelSerializer):
+    owner = CustomUserSerializer()
     author = AuthorSerializer(many=True)
     genre = GenreSerializer(many=True)
 
     class Meta:
         model = BookCard
-        fields = '__all__'
-
-
-class AdvertSerializer(serializers.ModelSerializer):
-    owner = CustomUserSerializer()
-    book = BookSerializer()
-
-    class Meta:
-        model = Advert
-        fields = '__all__'
+        fields = (
+            'id', 'pub_date', 'owner', 'title', 'description', 'image',
+            'author', 'genre', 'isbn', 'condition', 'year', 
+        )
 
 
 class FavoritesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Favorites
-        fields = '__all__'
+        fields = ('user', 'book_card', )

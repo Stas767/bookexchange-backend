@@ -3,10 +3,8 @@ from drf_yasg.views import get_schema_view
 from rest_framework import permissions, viewsets
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
 
-from api.serializers import (AdvertSerializer, AuthorSerializer,
-                             BookCardSerializer, BookSerializer,
-                             GenreSerializer, FavoritesSerializer)
-from books.models import Advert, Author, Book, BookCard, Favorites, Genre
+from api.serializers import BookCardSerializer, FavoritesSerializer
+from books.models import BookCard, Favorites
 
 
 def get_doc_shema_view():
@@ -24,30 +22,10 @@ def get_doc_shema_view():
     )
 
 
-class AdvertViewSet(viewsets.ModelViewSet):
-    queryset = Advert.objects.all()
-    serializer_class = AdvertSerializer
-
-
 class BookCardViewSet(ListModelMixin, RetrieveModelMixin,
                       viewsets.GenericViewSet):
     queryset = BookCard.objects.all()
     serializer_class = BookCardSerializer
-
-
-class BookViewSet(viewsets.ModelViewSet):
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-
-
-class AuthorViewSet(viewsets.ModelViewSet):
-    queryset = Author.objects.all()
-    serializer_class = AuthorSerializer
-
-
-class GenreViewSet(viewsets.ModelViewSet):
-    queryset = Genre.objects.all()
-    serializer_class = GenreSerializer
 
 
 class FavoritesViewSet(ListModelMixin, RetrieveModelMixin,

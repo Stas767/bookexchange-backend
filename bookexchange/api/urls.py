@@ -2,25 +2,19 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from api.views import get_doc_shema_view
-from api.views import (AdvertViewSet, AuthorViewSet, BookCardViewSet,
-                       BookViewSet, FavoritesViewSet, GenreViewSet)
+from api.views import BookCardViewSet, FavoritesViewSet
 
 router = DefaultRouter()
-# router.register(r'adverts', AdvertViewSet)
-# router.register(r'authors', AuthorViewSet)
-# router.register(r'books', BookViewSet)
-# удалить в следующей версии api
 router.register(r'book_card', BookCardViewSet)
 router.register(r'favorites', FavoritesViewSet)
-# router.register(r'genres', GenreViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('v1/', include(router.urls)),
 
     path(
-        'docs/dynamic/', get_doc_shema_view().with_ui('redoc', cache_timeout=0)
+        'v1/docs/dynamic/', get_doc_shema_view().with_ui('redoc', cache_timeout=0)
     ),
 
-    path('', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
+    path('v1/', include('djoser.urls')),
+    path('v1/auth/', include('djoser.urls.authtoken')),
 ]
