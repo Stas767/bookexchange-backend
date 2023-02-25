@@ -25,12 +25,12 @@ class BookCard(models.Model):
     author = models.ManyToManyField(
         'Author',
         verbose_name='Автор книги',
-        related_name='books'
+        related_name='book_cards'
     )
     genre = models.ManyToManyField(
         'Genre',
         verbose_name='Жанр',
-        related_name='books'
+        related_name='book_cards'
     )
     description = models.TextField(
         'Описание книги',

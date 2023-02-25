@@ -2,15 +2,17 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from api.views import get_doc_shema_view
-from api.views import (AdvertViewSet, AuthorViewSet, BookViewSet,
-                       FavoritesViewSet, GenreViewSet)
+from api.views import (AdvertViewSet, AuthorViewSet, BookCardViewSet,
+                       BookViewSet, FavoritesViewSet, GenreViewSet)
 
 router = DefaultRouter()
-router.register(r'adverts', AdvertViewSet)
-router.register(r'authors', AuthorViewSet)
-router.register(r'books', BookViewSet)
+# router.register(r'adverts', AdvertViewSet)
+# router.register(r'authors', AuthorViewSet)
+# router.register(r'books', BookViewSet)
+# удалить в следующей версии api
+router.register(r'book_card', BookCardViewSet)
 router.register(r'favorites', FavoritesViewSet)
-router.register(r'genres', GenreViewSet)
+# router.register(r'genres', GenreViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

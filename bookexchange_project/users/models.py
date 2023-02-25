@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 
 from users.managers import CustomUserManager
@@ -13,7 +13,7 @@ EXCHANGE_CHOICES = (
 # ------------------------------
 
 
-class CustomUser(AbstractUser):
+class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(
         'Email', max_length=settings.MEDIUM_FIELD_LENGTH, unique=True
@@ -25,6 +25,9 @@ class CustomUser(AbstractUser):
     city = models.CharField(
         'Город', max_length=settings.SHORT_FIELD_LENGTH, blank=True, null=True
     )
+    is_superuser = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     # Удалить в следующей версии api
     subway = models.CharField(

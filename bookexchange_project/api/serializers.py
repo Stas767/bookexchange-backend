@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from djoser.serializers import UserSerializer
 from rest_framework import serializers
 
-from books.models import Advert, Author, Book, Favorites, Genre
+from books.models import Advert, Author, Book, BookCard, Favorites, Genre
 
 User = get_user_model()
 
@@ -34,6 +34,15 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
+        fields = '__all__'
+
+
+class BookCardSerializer(serializers.ModelSerializer):
+    author = AuthorSerializer(many=True)
+    genre = GenreSerializer(many=True)
+
+    class Meta:
+        model = BookCard
         fields = '__all__'
 
 
