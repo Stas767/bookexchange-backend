@@ -4,12 +4,13 @@ from django.db import models
 
 from users.managers import CustomUserManager
 
-# Перенести в константы books в следующей версии api
+# Удалить в следующей версии api
 EXCHANGE_CHOICES = (
     ('PERSONAL', 'Личная встреча'),
     ('PICKUP_POINT', 'Доставка в отделение или пункт выдачи'),
     ('COURIER', 'Курьерская доставка'),
 )
+# ------------------------------
 
 
 class CustomUser(AbstractUser):
