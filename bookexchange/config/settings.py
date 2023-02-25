@@ -14,7 +14,7 @@ else:
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -136,7 +136,14 @@ REST_FRAMEWORK = {
         'rest_framework.pagination.PageNumberPagination'
     ),
 
-    'PAGE_SIZE': 9,
+    'PAGE_SIZE': 3,
+}
+
+DJOSER = {
+    'SERIALIZERS': {
+        'user': 'api.serializers.CustomUserSerializer',
+        'current_user': 'api.serializers.CustomUserSerializer',
+    }
 }
 
 SHORT_FIELD_LENGTH = 50
