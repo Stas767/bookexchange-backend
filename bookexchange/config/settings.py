@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     load_dotenv(BASE_DIR.parent.joinpath('infra/.env'))
@@ -14,7 +14,7 @@ else:
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['web', 'localhost', '127.0.0.1']
 
 DJANGO_APPS = [
     'django.contrib.admin',
