@@ -14,7 +14,8 @@ else:
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
-ALLOWED_HOSTS = ['web', 'localhost', '127.0.0.1']
+# Внес изменение по просьбе фронта
+ALLOWED_HOSTS = ['*']
 
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -153,3 +154,5 @@ LONG_FIELD_LENGTH = 1600
 CSRF_TRUSTED_ORIGINS = [
     'http://62.217.181.48'
 ]
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
