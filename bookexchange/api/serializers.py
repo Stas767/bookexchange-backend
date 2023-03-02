@@ -29,8 +29,8 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class BookCardSerializer(serializers.ModelSerializer):
+    author = serializers.SerializerMethodField()
     owner = CustomUserSerializer()
-    author = AuthorSerializer(many=True)
     genre = GenreSerializer(many=True)
 
     class Meta:
@@ -39,6 +39,9 @@ class BookCardSerializer(serializers.ModelSerializer):
             'id', 'pub_date', 'owner', 'title', 'description', 'image',
             'author', 'genre', 'isbn', 'condition', 'year', 
         )
+    
+    def get_author(self, instance):
+        return ', '.join([str(author) for author in instance.author.all()])
 
 
 class FavoritesSerializer(serializers.ModelSerializer):

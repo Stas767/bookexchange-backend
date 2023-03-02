@@ -24,7 +24,10 @@ def get_doc_shema_view():
 
 class BookCardViewSet(ListModelMixin, RetrieveModelMixin,
                       viewsets.GenericViewSet):
-    queryset = BookCard.objects.all()
+    queryset = (
+        BookCard.objects.select_related('owner')
+        .prefetch_related('author', 'genre')
+    )
     serializer_class = BookCardSerializer
 
 
