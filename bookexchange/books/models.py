@@ -50,6 +50,7 @@ class BookCard(models.Model):
     
 
     class Meta:
+        ordering = ['-id', ]
         verbose_name = 'Карточка книги'
         verbose_name_plural = 'Карточки книг'
 
@@ -77,7 +78,10 @@ class Author(models.Model):
         verbose_name_plural = 'Авторы'
 
     def __str__(self):
-        return f'{self.last_name} {self.first_name}'
+        return '{} {}.{}.'.format(
+            self.last_name.title(), self.first_name[0].upper(),
+            self.surname[0].upper()
+        )
 
 
 class Genre(models.Model):
