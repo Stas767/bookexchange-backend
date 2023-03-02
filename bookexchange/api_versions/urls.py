@@ -3,16 +3,21 @@ from drf_yasg.views import get_schema_view
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from api.views import BookCardViewSet, FavoritesViewSet
+from api_versions.views import (BookViewSetV2, BookCardViewSetV1,
+                                BookCardViewSetV2, FavoritesViewSetV1)
 
-router = DefaultRouter()
-router.register(r'book_card', BookCardViewSet)
-router.register(r'favorites', FavoritesViewSet)
+router_v1 = DefaultRouter()
+router_v1.register(r'book_card', BookCardViewSetV1)
+router_v1.register(r'favorites', FavoritesViewSetV1)
+
+router_v2 = DefaultRouter()
+router_v2.register(r'book', BookViewSetV2)
+router_v2.register(r'book_card', BookCardViewSetV2)
+router_v2.register(r'favorites', FavoritesViewSetV1)
 
 urlpatterns = [
-    path('auth/', include('djoser.urls.authtoken')),
-    path('', include('djoser.urls')),
-    path('', include(router.urls)),
+    path('v1/', include(router_v1.urls)),
+    path('v2/', include(router_v2.urls)),
 ]
 
 schema = get_schema_view(

@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
     load_dotenv(BASE_DIR.parent.joinpath('infra/.env'))
@@ -14,7 +14,6 @@ else:
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
-# Внес изменение по просьбе фронта
 ALLOWED_HOSTS = ['*']
 
 DJANGO_APPS = [
@@ -38,6 +37,7 @@ LOCAL_APPS = [
     'users',
     'books',
     'api',
+    'api_versions'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
