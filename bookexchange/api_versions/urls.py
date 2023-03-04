@@ -18,6 +18,8 @@ router_v2.register(r'favorites', FavoritesViewSetV1)
 urlpatterns = [
     path('v1/', include(router_v1.urls)),
     path('v2/', include(router_v2.urls)),
+    path('', include('djoser.urls.authtoken')),
+    path('', include('djoser.urls')),
 ]
 
 schema = get_schema_view(
