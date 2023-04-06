@@ -1,6 +1,5 @@
-from django.contrib import admin
-
 from books.models import Advert, Author, Book, Favorites, Genre
+from django.contrib import admin
 
 admin.site.register(Advert)
 admin.site.register(Book)
