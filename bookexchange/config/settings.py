@@ -1,18 +1,18 @@
 import os
 from pathlib import Path
 
+from corsheaders.defaults import default_headers, default_methods
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 DEBUG = True
 
 if DEBUG:
     load_dotenv(BASE_DIR.parent.joinpath("infra/.env"))
-else:
-    load_dotenv()
-
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+    SECRET_KEY = "test1234"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -31,12 +31,13 @@ THIRD_PARTY_APPS = [
     "djoser",
     "django_filters",
     "drf_yasg",
+    "corsheaders",
 ]
 
 LOCAL_APPS = [
-    "users",
-    "books",
     "api",
+    "books",
+    "users",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -44,6 +45,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -82,11 +84,11 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv("POSTGRES_DB", default="postgres"),
-            "USER": os.getenv("POSTGRES_USER", default="postgres"),
-            "PASSWORD": os.getenv("POSTGRES_PASSWORD", default="postgres"),
-            "HOST": os.getenv("HOST", default="127.0.0.1"),
-            "PORT": os.getenv("PORT", default="5432"),
+            "NAME": os.getenv("POSTGRES_DB"),
+            "USER": os.getenv("POSTGRES_USER"),
+            "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+            "HOST": os.getenv("HOST"),
+            "PORT": os.getenv("PORT"),
         }
     }
 
@@ -107,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ru"
 
 TIME_ZONE = "UTC"
 
@@ -133,9 +135,20 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": (
         "rest_framework.pagination.PageNumberPagination"
     ),
-    "PAGE_SIZE": 9,
+    "PAGE_SIZE": 10,
+}
+
+DJOSER = {
+    "SERIALIZERS": {
+        "user": "api.serializers.CustomUserSerializer",
+        "current_user": "api.serializers.CustomUserSerializer",
+    }
 }
 
 SHORT_FIELD_LENGTH = 50
 MEDIUM_FIELD_LENGTH = 150
 LONG_FIELD_LENGTH = 1600
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_METHODS = list(default_methods)
+CORS_ALLOW_HEADERS = list(default_headers)

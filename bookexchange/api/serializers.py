@@ -1,57 +1,98 @@
-from books.models import Advert, Author, Book, BookCard, Favorites, Genre
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserSerializer
 from rest_framework import serializers
+
+from books.models import Author, Book, BookCard, Favorites, Genre
 
 User = get_user_model()
 
 
 class CustomUserSerializer(UserSerializer):
+    # book_cards = serializers.RelatedField(read_only=True, many=True)
+    # favorites = serializers.RelatedField(read_only=True, many=True)
+
     class Meta:
         model = User
-        fields = "__all__"
+        fields = (
+            "first_name",
+            "last_name",
+            "email",
+            "phone",
+            "city",
+            "subway",
+            "exchange",
+            "is_active",
+            "date_joined",
+            "book_cards",
+            "favorites",
+        )
 
 
 class AuthorSerializer(serializers.ModelSerializer):
+    # books = serializers.RelatedField(read_only=True, many=True)
+
     class Meta:
         model = Author
-        fields = "__all__"
+        fields = (
+            "first_name",
+            "last_name",
+            "patronymic",
+            "bio",
+            "books",
+        )
 
 
 class GenreSerializer(serializers.ModelSerializer):
+    # books = serializers.RelatedField(read_only=True, many=True)
+
     class Meta:
         model = Genre
-        fields = "__all__"
+        fields = ("name", "slug", "books")
 
 
 class BookSerializer(serializers.ModelSerializer):
-    authors = AuthorSerializer(many=True)
-    genres = GenreSerializer(many=True)
+    # authors = AuthorSerializer(read_only=True, many=True)
+    # genres = GenreSerializer(read_only=True, many=True)
+    # book_cards = serializers.RelatedField(read_only=True, many=True)
 
     class Meta:
         model = Book
-        fields = "__all__"
+        fields = (
+            "pub_date",
+            "last_update",
+            "title",
+            "description",
+            "cover",
+            "authors",
+            "genres",
+            "isbn",
+            "year",
+            "num_of_pages",
+            "book_cards",
+        )
 
 
 class BookCardSerializer(serializers.ModelSerializer):
-    author = AuthorSerializer(many=True)
-    genre = GenreSerializer(many=True)
+    # owner = CustomUserSerializer(read_only=True)
+    # book = BookSerializer(read_only=True)
+    # favorites = serializers.RelatedField(read_only=True, many=True)
 
     class Meta:
         model = BookCard
-        fields = "__all__"
-
-
-class AdvertSerializer(serializers.ModelSerializer):
-    owner = CustomUserSerializer()
-    book = BookSerializer()
-
-    class Meta:
-        model = Advert
-        fields = "__all__"
+        fields = (
+            "pub_date",
+            "last_update",
+            "owner",
+            "title",
+            "description",
+            "image",
+            "book",
+            "condition",
+            "favorites",
+        )
 
 
 class FavoritesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorites
-        fields = "__all__"
+        fields = ("user", "book_card")
