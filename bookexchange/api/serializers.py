@@ -8,8 +8,8 @@ User = get_user_model()
 
 
 class CustomUserSerializer(UserSerializer):
-    # book_cards = serializers.RelatedField(read_only=True, many=True)
-    # favorites = serializers.RelatedField(read_only=True, many=True)
+    book_cards = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    favorites = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = User
@@ -29,7 +29,7 @@ class CustomUserSerializer(UserSerializer):
 
 
 class AuthorSerializer(serializers.ModelSerializer):
-    # books = serializers.RelatedField(read_only=True, many=True)
+    books = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Author
@@ -43,7 +43,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 
 class GenreSerializer(serializers.ModelSerializer):
-    # books = serializers.RelatedField(read_only=True, many=True)
+    books = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Genre
@@ -51,9 +51,9 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class BookSerializer(serializers.ModelSerializer):
-    # authors = AuthorSerializer(read_only=True, many=True)
-    # genres = GenreSerializer(read_only=True, many=True)
-    # book_cards = serializers.RelatedField(read_only=True, many=True)
+    authors = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    genres = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    book_cards = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Book
@@ -73,9 +73,9 @@ class BookSerializer(serializers.ModelSerializer):
 
 
 class BookCardSerializer(serializers.ModelSerializer):
-    # owner = CustomUserSerializer(read_only=True)
-    # book = BookSerializer(read_only=True)
-    # favorites = serializers.RelatedField(read_only=True, many=True)
+    owner = serializers.PrimaryKeyRelatedField(read_only=True)
+    book = serializers.PrimaryKeyRelatedField(read_only=True)
+    favorites = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = BookCard
