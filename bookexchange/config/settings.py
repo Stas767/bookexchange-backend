@@ -12,9 +12,9 @@ DEBUG = False
 
 if DEBUG:
     load_dotenv(BASE_DIR.parent.joinpath("infra/.env"))
-    SECRET_KEY = "test1234"
+    SECRET_KEY = "83859aa4ef794941b542beb8ad633b11"
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["62.217.181.48"]
 
 DJANGO_APPS = [
     "django.contrib.admin",
