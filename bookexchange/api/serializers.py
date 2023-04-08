@@ -14,6 +14,7 @@ class CustomUserSerializer(UserSerializer):
     class Meta:
         model = User
         fields = (
+            "id",
             "first_name",
             "last_name",
             "email",
@@ -34,6 +35,7 @@ class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = (
+            "id",
             "first_name",
             "last_name",
             "patronymic",
@@ -47,7 +49,7 @@ class GenreSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Genre
-        fields = ("name", "slug", "books")
+        fields = ("id", "name", "slug", "books")
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -58,6 +60,7 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = (
+            "id",
             "pub_date",
             "last_update",
             "title",
@@ -80,6 +83,7 @@ class BookCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookCard
         fields = (
+            "id",
             "pub_date",
             "last_update",
             "owner",
@@ -95,4 +99,4 @@ class BookCardSerializer(serializers.ModelSerializer):
 class FavoritesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorites
-        fields = ("user", "book_card")
+        fields = ("id", "user", "book_card")
