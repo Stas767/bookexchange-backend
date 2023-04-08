@@ -1,0 +1,669 @@
+[
+    {
+      "model": "admin.logentry",
+      "pk": 1,
+      "fields": {
+        "action_time": "2023-02-25T15:49:20.293Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "chupss@mail.ru",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043b\\u0435\\u0444\\u043e\\u043d\", \"\\u0413\\u043e\\u0440\\u043e\\u0434\", \"\\u041c\\u0435\\u0442\\u0440\\u043e\", \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u043e\\u0431\\u043c\\u0435\\u043d\\u0430\"]}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 2,
+      "fields": {
+        "action_time": "2023-02-25T15:51:06.377Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "user2@mail.ru",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Email\", \"\\u0422\\u0435\\u043b\\u0435\\u0444\\u043e\\u043d\", \"\\u0413\\u043e\\u0440\\u043e\\u0434\", \"\\u041c\\u0435\\u0442\\u0440\\u043e\", \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u043e\\u0431\\u043c\\u0435\\u043d\\u0430\"]}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 3,
+      "fields": {
+        "action_time": "2023-02-25T15:51:53.795Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "user3@mail.ru",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043b\\u0435\\u0444\\u043e\\u043d\", \"\\u0413\\u043e\\u0440\\u043e\\u0434\", \"\\u041c\\u0435\\u0442\\u0440\\u043e\", \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u043e\\u0431\\u043c\\u0435\\u043d\\u0430\"]}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 4,
+      "fields": {
+        "action_time": "2023-02-25T15:52:31.039Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "1",
+        "object_repr": "Пушкин Александр",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 5,
+      "fields": {
+        "action_time": "2023-02-25T15:53:19.417Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "2",
+        "object_repr": "Лермонтов Михаил",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 6,
+      "fields": {
+        "action_time": "2023-02-25T15:54:13.680Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "3",
+        "object_repr": "Гоголь Николай",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 7,
+      "fields": {
+        "action_time": "2023-02-25T15:54:53.479Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "1",
+        "object_repr": "Повесть",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 8,
+      "fields": {
+        "action_time": "2023-02-25T15:55:00.804Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "2",
+        "object_repr": "Роман",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 9,
+      "fields": {
+        "action_time": "2023-02-25T15:55:11.044Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "3",
+        "object_repr": "Драма",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 10,
+      "fields": {
+        "action_time": "2023-02-25T15:55:27.985Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "4",
+        "object_repr": "Комедия",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 11,
+      "fields": {
+        "action_time": "2023-02-25T15:55:56.840Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "5",
+        "object_repr": "Стихотворение",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 12,
+      "fields": {
+        "action_time": "2023-02-25T15:56:08.302Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "6",
+        "object_repr": "Ода",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 13,
+      "fields": {
+        "action_time": "2023-02-25T15:57:14.991Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "1",
+        "object_repr": "Капитанская дочка",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 14,
+      "fields": {
+        "action_time": "2023-02-25T15:58:48.571Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "2",
+        "object_repr": "Евгений Онегин",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 15,
+      "fields": {
+        "action_time": "2023-02-25T16:01:02.502Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "7",
+        "object_repr": "Сказка",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 16,
+      "fields": {
+        "action_time": "2023-02-25T16:01:15.372Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "3",
+        "object_repr": "Сказка о золотом петушке",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 17,
+      "fields": {
+        "action_time": "2023-02-25T16:02:33.021Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "8",
+        "object_repr": "Баллада",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 18,
+      "fields": {
+        "action_time": "2023-02-25T16:02:51.195Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "4",
+        "object_repr": "Бородино",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 19,
+      "fields": {
+        "action_time": "2023-02-25T16:06:58.427Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "9",
+        "object_repr": "Поэма",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 20,
+      "fields": {
+        "action_time": "2023-02-25T16:07:11.557Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "5",
+        "object_repr": "Демон (поэма)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 21,
+      "fields": {
+        "action_time": "2023-02-25T16:08:15.607Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "6",
+        "object_repr": "Мцыри",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 22,
+      "fields": {
+        "action_time": "2023-02-25T16:09:37.544Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "7",
+        "object_repr": "Мертвые души",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 23,
+      "fields": {
+        "action_time": "2023-02-25T16:10:39.220Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "8",
+        "object_repr": "Ревизор (комедия)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "admin.logentry",
+      "pk": 24,
+      "fields": {
+        "action_time": "2023-02-25T16:11:44.272Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "9",
+        "object_repr": "Нос (повесть Гоголя)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+      }
+    },
+    {
+      "model": "sessions.session",
+      "pk": "vwvk6yaq2lc8f55m4pnob6330ejcfxrc",
+      "fields": {
+        "session_data": ".eJxVjDsOwyAQRO9CHSHAXj4p0_sMiIUlOIlAMnYV5e6xJRfJlPPezJv5sK3Fb50WPyd2ZZJdfjsM8Un1AOkR6r3x2Oq6zMgPhZ-086klet1O9--ghF72tcOogBKiEs4OWQIJafTg1Ih2Dxhj0UihAwFYUmrQ0marRwc5RpEF-3wBwzc2zg:1pVwmf:JWsjhMd8jOXlLxD5e4fURMv_ubs4nLj3zOgnrr-b0gw",
+        "expire_date": "2023-03-11T15:48:25.280Z"
+      }
+    },
+    {
+      "model": "authtoken.token",
+      "pk": "4d14dd447ea7d1ed42091fca1883ea0d77e210e9",
+      "fields": {
+        "user": 2,
+        "created": "2023-02-25T16:03:11.401Z"
+      }
+    },
+    {
+      "model": "users.customuser",
+      "pk": 1,
+      "fields": {
+        "password": "pbkdf2_sha256$390000$JDCkW3HsFJOx0xRhx9PtU1$spWscYAqsfxXzcZf49EhsMHm30Ns7P+CkXqyj+G+eNE=",
+        "last_login": "2023-02-25T15:48:25Z",
+        "email": "chupss@mail.ru",
+        "phone": "+7 (900) 300-20-10",
+        "city": "Санкт-Петербург",
+        "subway": "Московская",
+        "exchange": "PERSONAL",
+        "is_superuser": true,
+        "is_staff": true,
+        "is_active": true,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "users.customuser",
+      "pk": 2,
+      "fields": {
+        "password": "pbkdf2_sha256$390000$wT0Wd32eQvpodOUkR2HjFd$dn4gfU0lrWSM313QZk/f6Jceiqtksgpis54PAbI44vA=",
+        "last_login": "2023-02-25T16:03:11.416Z",
+        "email": "user2@mail.ru",
+        "phone": "+7 (123) 456-78-90",
+        "city": "Москва",
+        "subway": "Охотный ряд",
+        "exchange": "PICKUP_POINT",
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "users.customuser",
+      "pk": 3,
+      "fields": {
+        "password": "pbkdf2_sha256$390000$F48MNolGJ5hH15ZaMH6jR3$XzyX9uMFQvzvJdAO6guQ9nXK4nINSdIGF8rHw4Xnezk=",
+        "last_login": null,
+        "email": "user3@mail.ru",
+        "phone": "+7 (999) 888-77-66",
+        "city": "Екатеринбург",
+        "subway": "?!",
+        "exchange": "COURIER",
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "books.bookcard",
+      "pk": 1,
+      "fields": {
+        "pub_date": "2023-02-25T15:57:14.985Z",
+        "owner": 1,
+        "title": "Капитанская дочка",
+        "description": "«Капита́нская до́чка» — исторический роман (или повесть) Александра Пушкина, действие которого происходит во время восстания Емельяна Пугачёва. Впервые опубликован без указания имени автора в 4-й книжке журнала «Современник», поступившей в продажу в последней декаде 1836 года.",
+        "image": "book_card/img/i714910.jpg",
+        "isbn": "123-456-789",
+        "condition": "EXCELLENT",
+        "year": 2015,
+        "author": [
+          1
+        ],
+        "genre": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "model": "books.bookcard",
+      "pk": 2,
+      "fields": {
+        "pub_date": "2023-02-25T15:58:48.567Z",
+        "owner": 2,
+        "title": "Евгений Онегин",
+        "description": "«Евге́ний Оне́гин» (дореф. «Евгеній Онѣгинъ») — роман в стихах русского писателя и поэта Александра Сергеевича Пушкина, начат 9 мая 1823 года и закончен 5 октября 1831 года, одно из самых значительных произведений русской словесности. Повествование ведётся от имени безымянного автора, который, впрочем, в первых же строфах называет Онегина «добрый мой приятель». По известному определению В. Г. Белинского, Пушкин назвал «Евгения Онегина» романом в стихах, поскольку в нём изображена «жизнь во всей её прозаической действительности».",
+        "image": "book_card/img/i714910_LuwNKt5.jpg",
+        "isbn": "321-654-987",
+        "condition": "GOOD",
+        "year": 2020,
+        "author": [
+          1
+        ],
+        "genre": [
+          2
+        ]
+      }
+    },
+    {
+      "model": "books.bookcard",
+      "pk": 3,
+      "fields": {
+        "pub_date": "2023-02-25T16:01:15.369Z",
+        "owner": 3,
+        "title": "Сказка о золотом петушке",
+        "description": "«Ска́зка о золото́м петушке́» — сказка русского поэта Александра Сергеевича Пушкина; последнее из написанных им произведений такого рода. Сказка была написана в 1834 году, а впервые напечатана в следующем году в журнале «Библиотека для чтения» (том IX, книга 16).",
+        "image": "book_card/img/274px-Сказка_о_золотом_петушке_1903.jpg",
+        "isbn": "444-555-666",
+        "condition": "AVERAGE",
+        "year": 2010,
+        "author": [
+          1
+        ],
+        "genre": [
+          7
+        ]
+      }
+    },
+    {
+      "model": "books.bookcard",
+      "pk": 4,
+      "fields": {
+        "pub_date": "2023-02-25T16:02:51.192Z",
+        "owner": 1,
+        "title": "Бородино",
+        "description": "«Бородино́» — баллада поэта Михаила Юрьевича Лермонтова. Было написано в 1837 году. Опубликовано в журнале «Современник» в том же 1837 году. Посвящено Бородинскому сражению 7 сентября 1812 года, в котором русская армия сражалась против французского наполеоновского войска.",
+        "image": "book_card/img/Lermontov-Borodino-Sovremennik1837.jpg",
+        "isbn": "111-222-333",
+        "condition": "NEW",
+        "year": 1965,
+        "author": [
+          2
+        ],
+        "genre": [
+          8
+        ]
+      }
+    },
+    {
+      "model": "books.bookcard",
+      "pk": 5,
+      "fields": {
+        "pub_date": "2023-02-25T16:07:11.551Z",
+        "owner": 2,
+        "title": "Демон (поэма)",
+        "description": "«Демон» — поэма Михаила Юрьевича Лермонтова, над которой поэт работал в течение десяти лет — с 1829 по 1839 год. Из-за цензурных запретов произведение долгое время не допускалось к печати и распространялось в списках, в которых были представлены как его ранние, так и поздние версии; всего, по данным исследователей, насчитывалось восемь авторских редакций «Демона». В 1842 году в журнале «Отечественные записки» были опубликованы отрывки из поэмы. Первое полное издание произведения состоялось в Германии в 1856 году, в России — в 1860 году.",
+        "image": "book_card/img/274px-Vrubel_Demon.jpg",
+        "isbn": "999-999-999",
+        "condition": "GOOD",
+        "year": 2023,
+        "author": [
+          2
+        ],
+        "genre": [
+          9
+        ]
+      }
+    },
+    {
+      "model": "books.bookcard",
+      "pk": 6,
+      "fields": {
+        "pub_date": "2023-02-25T16:08:15.603Z",
+        "owner": 3,
+        "title": "Мцыри",
+        "description": "«Мцы́ри» — романтическая поэма М. Ю. Лермонтова, написанная в 1839 году и опубликованная (с цензурными пропусками) в 1840 году в единственном прижизненном издании поэта — сборнике «Стихотворения М. Лермонтова». Она относится к поздним кавказским поэмам Лермонтова и считается одним из последних классических образцов русской романтической поэзии.",
+        "image": "book_card/img/250px-Paintings_by_Mikhail_Lermontov_1837.jpg",
+        "isbn": "000-111-000",
+        "condition": "EXCELLENT",
+        "year": 1999,
+        "author": [
+          2
+        ],
+        "genre": [
+          9
+        ]
+      }
+    },
+    {
+      "model": "books.bookcard",
+      "pk": 7,
+      "fields": {
+        "pub_date": "2023-02-25T16:09:37.540Z",
+        "owner": 1,
+        "title": "Мертвые души",
+        "description": "«Мёртвые ду́ши» (полное название «Похождения Чичикова, или Мёртвые души», рус. дореф. Похожденія Чичикова, или Мертвыя души) — произведение Николая Васильевича Гоголя, жанр которого сам автор обозначил как поэма. Писать книгу Гоголь начал в 1835 году как трёхтомник. Первый том был издан в 1842 году. Практически готовый второй том был утерян, но сохранилось несколько глав в черновиках. Третий том не был начат, о нём остались только отдельные сведения, которые были опубликованы вскоре после смерти автора в 1852 году.",
+        "image": "book_card/img/200px-Dead_Souls_novel_Nikolai_Gogol_1842_title_page.jpg",
+        "isbn": "000-111-222",
+        "condition": "NEW",
+        "year": 2005,
+        "author": [
+          3
+        ],
+        "genre": [
+          2,
+          9
+        ]
+      }
+    },
+    {
+      "model": "books.bookcard",
+      "pk": 8,
+      "fields": {
+        "pub_date": "2023-02-25T16:10:39.217Z",
+        "owner": 2,
+        "title": "Ревизор (комедия)",
+        "description": "«Ревизо́р» — комедия в пяти действиях русского писателя Николая Васильевича Гоголя. Годом написания считается 1835 год, однако окончательные правки в свое произведение Н. В. Гоголь внёс в 1842 году. Темой этой комедии социально-сатирической направленности являются пороки общества, чиновничество и его бездеятельность, лицемерие, духовная бедность, общечеловеческая глупость.",
+        "image": "book_card/img/Nikolai_Gogol_-_Revizor_cover_1836.jpg",
+        "isbn": "333-444-555",
+        "condition": "AVERAGE",
+        "year": 1965,
+        "author": [
+          3
+        ],
+        "genre": [
+          4
+        ]
+      }
+    },
+    {
+      "model": "books.bookcard",
+      "pk": 9,
+      "fields": {
+        "pub_date": "2023-02-25T16:11:44.268Z",
+        "owner": 3,
+        "title": "Нос (повесть Гоголя)",
+        "description": "«Нос» — сатирическая абсурдистская повесть, написанная Николаем Васильевичем Гоголем в 1832—1833 годах. Впервые опубликована в журнале «Современник» в 1836 г., III том.",
+        "image": "book_card/img/Кравченко_Иллюстрация_к_Повести_Гоголя_Нос.jpg",
+        "isbn": "111-222-333",
+        "condition": "GOOD",
+        "year": 2003,
+        "author": [
+          3
+        ],
+        "genre": [
+          1
+        ]
+      }
+    },
+    {
+      "model": "books.author",
+      "pk": 1,
+      "fields": {
+        "first_name": "Александр",
+        "last_name": "Пушкин",
+        "surname": "Сергеевич",
+        "bio": "Последние годы жизни Пушкина прошли в тяжелой обстановке все обострявшихся отношений с царем и вражды к поэту влиятельных кругов придворной и чиновничьей аристократии. Но, хотя в таких условиях творческая работа не могла быть интенсивной, именно в последние годы написаны «Пиковая дама», «Египетские ночи», «Капитанская дочка», поэма «Медный всадник», сказки."
+      }
+    },
+    {
+      "model": "books.author",
+      "pk": 2,
+      "fields": {
+        "first_name": "Михаил",
+        "last_name": "Лермонтов",
+        "surname": "Юрьевич",
+        "bio": "Род Лермонтовых происходил из Шотландии и восходил к полумифическому барду-пророку Томасу Лермонту. В 1613 году один из представителей этого рода, поручик польской армии Георг (Джордж) Лермонт (около 1596—1633 или 1634 года), был взят в плен войсками князя Дмитрия Пожарского при капитуляции польско-литовского гарнизона крепости Белая и в числе прочих так называемых «бельских немцев» поступил на службу к царю Михаилу Фёдоровичу. Лермонт перешёл в православие и стал, под именем Юрия Андреевича, родоначальником русской дворянской фамилии Лермонтовых."
+      }
+    },
+    {
+      "model": "books.author",
+      "pk": 3,
+      "fields": {
+        "first_name": "Николай",
+        "last_name": "Гоголь",
+        "surname": "Васильевич",
+        "bio": "По мнению В. Белинского и Н. Чернышевского, Гоголь стал основателем литературного направления — основного этапа «натуральной школы» 1840-х годов; современные исследователи считают, что он оказал большое влияние на русскую и мировую литературу. Влияние Гоголя на своё творчество признавали Михаил Булгаков, Фёдор Достоевский, Рюноскэ Акутагава, Фланнери О’Коннор, Франц Кафка и многие другие."
+      }
+    },
+    {
+      "model": "books.genre",
+      "pk": 1,
+      "fields": {
+        "name": "Повесть",
+        "slug": "povest"
+      }
+    },
+    {
+      "model": "books.genre",
+      "pk": 2,
+      "fields": {
+        "name": "Роман",
+        "slug": "roman"
+      }
+    },
+    {
+      "model": "books.genre",
+      "pk": 3,
+      "fields": {
+        "name": "Драма",
+        "slug": "drama"
+      }
+    },
+    {
+      "model": "books.genre",
+      "pk": 4,
+      "fields": {
+        "name": "Комедия",
+        "slug": "comediya"
+      }
+    },
+    {
+      "model": "books.genre",
+      "pk": 5,
+      "fields": {
+        "name": "Стихотворение",
+        "slug": "stihotvorenie"
+      }
+    },
+    {
+      "model": "books.genre",
+      "pk": 6,
+      "fields": {
+        "name": "Ода",
+        "slug": "oda"
+      }
+    },
+    {
+      "model": "books.genre",
+      "pk": 7,
+      "fields": {
+        "name": "Сказка",
+        "slug": "skazka"
+      }
+    },
+    {
+      "model": "books.genre",
+      "pk": 8,
+      "fields": {
+        "name": "Баллада",
+        "slug": "ballada"
+      }
+    },
+    {
+      "model": "books.genre",
+      "pk": 9,
+      "fields": {
+        "name": "Поэма",
+        "slug": "poema"
+      }
+    }
+    ]
+    
