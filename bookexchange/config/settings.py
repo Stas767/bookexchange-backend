@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-from corsheaders.defaults import default_headers, default_methods
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,7 +13,7 @@ if DEBUG:
     load_dotenv(BASE_DIR.parent.joinpath("infra/.env"))
     SECRET_KEY = "83859aa4ef794941b542beb8ad633b11"
 
-ALLOWED_HOSTS = ["62.217.181.48"]
+ALLOWED_HOSTS = ["*"]
 
 DJANGO_APPS = [
     "django.contrib.admin",
@@ -31,7 +30,6 @@ THIRD_PARTY_APPS = [
     "djoser",
     "django_filters",
     "drf_yasg",
-    "corsheaders",
 ]
 
 LOCAL_APPS = [
@@ -45,7 +43,6 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -148,7 +145,3 @@ DJOSER = {
 SHORT_FIELD_LENGTH = 50
 MEDIUM_FIELD_LENGTH = 150
 LONG_FIELD_LENGTH = 1600
-
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_METHODS = list(default_methods)
-CORS_ALLOW_HEADERS = list(default_headers)

@@ -31,11 +31,7 @@ class Author(models.Model):
         verbose_name_plural = "Авторы"
 
     def __str__(self):
-        return "{} {}.{}.".format(
-            self.last_name.title(),
-            self.first_name[0].upper(),
-            self.patronymic[0].upper(),
-        )
+        return f"{self.first_name} {self.last_name}"
 
 
 class Genre(models.Model):
@@ -73,10 +69,10 @@ class Book(models.Model):
         "Обложка", upload_to="books/img/", blank=True, null=True
     )
     authors = models.ManyToManyField(
-        "Author", verbose_name="Авторы", related_name="books"
+        "Author", verbose_name="Авторы", related_name="books", blank=True
     )
     genres = models.ManyToManyField(
-        "Genre", verbose_name="Жанры", related_name="books"
+        "Genre", verbose_name="Жанры", related_name="books", blank=True
     )
     isbn = models.CharField(
         "Уникальный номер (ISBN)",
@@ -148,8 +144,8 @@ class BookCard(models.Model):
 
     class Meta:
         ordering = ("-id",)
-        verbose_name = "Карточка книги"
-        verbose_name_plural = "Карточки книг"
+        verbose_name = "Объявление"
+        verbose_name_plural = "Объявления"
 
     def __str__(self):
         return self.title
@@ -175,4 +171,4 @@ class Favorites(models.Model):
         verbose_name_plural = "Избранное"
 
     def __str__(self):
-        return f"{self.user_id} <--> {self.book_card_id}"
+        return f"{self.user.email} <--> {self.book_card.title}"

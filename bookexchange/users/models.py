@@ -60,4 +60,4 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = "Пользователи"
 
     def __str__(self):
-        return "{} {} | {}".format(self.last_name, self.first_name, self.email)
+        return self.email
