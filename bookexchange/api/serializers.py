@@ -2,7 +2,14 @@ from django.contrib.auth import get_user_model
 from djoser.serializers import UserSerializer
 from rest_framework import serializers
 
-from books.models import Author, Book, BookCard, Favorites, Genre
+from books.models import (
+    Author,
+    Book,
+    BookApplication,
+    BookCard,
+    Favorites,
+    Genre
+)
 
 User = get_user_model()
 
@@ -97,6 +104,14 @@ class BookCardSerializer(serializers.ModelSerializer):
 
 
 class FavoritesSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Favorites
         fields = ("id", "user", "book_card")
+
+
+class ApplicationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BookApplication
+        fields = ("id", "book_card", "user", "name", "phone",)
