@@ -1,17 +1,25 @@
 from django.shortcuts import get_object_or_404
-from drf_yasg.utils import swagger_auto_schema, no_body
+from drf_yasg.utils import no_body, swagger_auto_schema
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from api.serializers import (
+    ApplicationSerializer,
     AuthorSerializer,
     BookCardSerializer,
     BookSerializer,
     FavoritesSerializer,
     GenreSerializer,
 )
-from books.models import Author, Book, BookCard, Favorites, Genre
+from books.models import (
+    Author,
+    Book,
+    BookApplication,
+    BookCard,
+    Favorites,
+    Genre,
+)
 
 
 class AuthorViewSet(viewsets.ModelViewSet):
@@ -56,3 +64,8 @@ class FavoritesViewSet(viewsets.ModelViewSet):
 class GenreViewSet(viewsets.ModelViewSet):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
+
+
+class ApplicationsViewSet(viewsets.ModelViewSet):
+    queryset = BookApplication.objects.all()
+    serializer_class = ApplicationSerializer

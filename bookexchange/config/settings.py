@@ -1,8 +1,6 @@
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
@@ -10,7 +8,6 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 DEBUG = False
 
 if DEBUG:
-    load_dotenv(BASE_DIR.parent.joinpath("infra/.env"))
     SECRET_KEY = "83859aa4ef794941b542beb8ad633b11"
 
 ALLOWED_HOSTS = ["*"]

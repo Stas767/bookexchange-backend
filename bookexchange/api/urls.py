@@ -4,6 +4,7 @@ from drf_yasg.views import get_schema_view
 from rest_framework.routers import DefaultRouter
 
 from api.views import (
+    ApplicationsViewSet,
     AuthorViewSet,
     BookCardViewSet,
     BookViewSet,
@@ -25,6 +26,7 @@ openapi_schema_view = get_schema_view(
 router = DefaultRouter()
 router.register(r"authors", AuthorViewSet)
 router.register(r"books", BookViewSet)
+router.register(r"applications", ApplicationsViewSet)
 router.register(r"book_cards", BookCardViewSet)
 router.register(r"favorites", FavoritesViewSet)
 router.register(r"genres", GenreViewSet)

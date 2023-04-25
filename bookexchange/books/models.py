@@ -172,3 +172,34 @@ class Favorites(models.Model):
 
     def __str__(self):
         return f"{self.user.email} <--> {self.book_card.title}"
+
+
+class BookApplication(models.Model):
+    book_card = models.ForeignKey(
+        BookCard,
+        on_delete=models.CASCADE,
+        verbose_name="Объявление",
+        related_name="applications",
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        verbose_name="Пользователь",
+        related_name="applications",
+        blank=True,
+        null=True
+    )
+    name = models.CharField(
+        "Имя", max_length=settings.MEDIUM_FIELD_LENGTH
+    )
+    phone = models.CharField(
+        "Телефон", max_length=settings.SHORT_FIELD_LENGTH
+    )
+
+    class Meta:
+        ordering = ("-id",)
+        verbose_name = "Заявка"
+        verbose_name_plural = "Заявки"
+
+    def __str__(self):
+        return f"{self.book_card.title} --> {self.user.email}"
