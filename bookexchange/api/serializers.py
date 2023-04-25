@@ -56,7 +56,7 @@ class GenreSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Genre
-        fields = ("id", "name", "slug", "books")
+        fields = ("id", "name", "slug", "books",)
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -107,7 +107,7 @@ class FavoritesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Favorites
-        fields = ("id", "user", "book_card")
+        fields = ("id", "user", "book_card",)
 
 
 class ApplicationSerializer(serializers.ModelSerializer):
